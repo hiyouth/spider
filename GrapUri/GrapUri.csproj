@@ -7,8 +7,8 @@
     <ProjectGuid>{7E381795-855A-428A-8E03-7A6B2DECDE7F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GrapUri</RootNamespace>
-    <AssemblyName>GrapUri</AssemblyName>
+    <RootNamespace>Spider</RootNamespace>
+    <AssemblyName>Spider</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,11 +43,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spider\BaseUriAnalyse.cs" />
-    <Compile Include="Spider\CnBlogs.cs" />
+    <Compile Include="Spider\BaseUriProcessor.cs" />
+    <Compile Include="Spider\CnBlogs\CnBlogs.cs" />
+    <Compile Include="Spider\CnBlogs\CnBlogsNewsProcessor.cs" />
+    <Compile Include="Spider\CnBlogs\CnBlogsUriSummaryFactory.cs" />
+    <Compile Include="Spider\IUriSummary.cs" />
+    <Compile Include="Spider\CommonProcessor.cs" />
     <Compile Include="Spider\IAnalyseUri.cs" />
     <Compile Include="Spider\Spider.cs" />
     <Compile Include="Spider\SummaryResult.cs" />
+    <Compile Include="Spider\UriFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -19,7 +19,11 @@ namespace GrapUri
             string mainContent;
             string picUri;
 
-          Uri uri = new System.Uri("http://qq.baidu**?.com");
+          Uri uri = new System.Uri("http://qq.baidu.com/555/6666/777");
+       
+          Match mch=m.Match("http://news.tower.im");
+          string s = mch.Value;
+          
 
          //   Uri = Console.ReadLine();
             Spider spider = new Spider("");

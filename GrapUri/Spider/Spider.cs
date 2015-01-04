@@ -38,6 +38,8 @@ namespace Spider
             return rlt;
         }
 
+        
+
         //处理发送的Uri
         private Uri FiliterUrl(string url)
         {
