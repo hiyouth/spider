@@ -14,10 +14,9 @@ namespace Spider.Spider.CnBlogs
             switch (uriHost)
             {
                 case "http://news.cnblogs.com":
-                    
-                    break;
+                    return new CnBlogsNewsProcessor();
                 default:
-                    break;
+                    return new CommonProcessor();
             }
         }
     }

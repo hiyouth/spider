@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace Spider
 {
-    /// <summary>
-    /// 通用处理
-    /// </summary>
-    public class CommonProcessor:IAnalyseUri,IUriSummary
+    //处理来自博客园的Uri分析
+    public class CnBlogs:IAnalyseUri
     {
+        /// <summary>
+        /// 通过Uri抓取网页概要信息
+        /// </summary>
+        /// <param name="uri"></param>
+        /// <returns></returns>
         public SummaryResult GetSummary(Uri uri)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SummaryResult GetUriSummary(Uri uri)
         {
             throw new NotImplementedException();
         }

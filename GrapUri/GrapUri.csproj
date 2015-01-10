@@ -47,6 +47,7 @@
     <Compile Include="Spider\CnBlogs\CnBlogs.cs" />
     <Compile Include="Spider\CnBlogs\CnBlogsNewsProcessor.cs" />
     <Compile Include="Spider\CnBlogs\CnBlogsUriSummaryFactory.cs" />
+    <Compile Include="Spider\HttpUtil.cs" />
     <Compile Include="Spider\IUriSummary.cs" />
     <Compile Include="Spider\CommonProcessor.cs" />
     <Compile Include="Spider\IAnalyseUri.cs" />
