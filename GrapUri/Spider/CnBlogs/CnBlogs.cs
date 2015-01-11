@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spider
+namespace Spiders
 {
     //处理来自博客园的Uri分析
     public class CnBlogs:IAnalyseUri

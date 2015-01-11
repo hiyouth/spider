@@ -5,24 +5,80 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Spider
+namespace Spiders
 {
     public abstract class BaseUriProcessor
     {
+        public BaseUriProcessor()
+        {
+
+        }
         public BaseUriProcessor (string titleRegex,string bodyRegex,string imgRegex)
         {
-            this.TitleRegex = titleRegex;
-            this.BodyRegex = bodyRegex;
-            this.ImgRegex = imgRegex;
+            this._titleRegexStr = titleRegex;
+            this._bodyRegexStr = bodyRegex;
+            this._imgRegexStr = imgRegex;
         }
+
+        public BaseUriProcessor(string headTitleRegexStr,string headdescripRegexStr)
+        {
+            this._headTitleRegexStr = headTitleRegexStr;
+            this._headDescripRegexStr = headdescripRegexStr;
+        }
+
+        protected string _titleRegexStr;
+        protected string _bodyRegexStr;
+        protected string _imgRegexStr;
+        protected string _timeRegexStr;
+        protected string _headDescripRegexStr;
+        protected string _headTitleRegexStr;
+
+
+       
+
         public Uri Uri { get; set; }
-        public string TitleRegex { get; set; }
 
-        public string BodyRegex { get; set; }
+        public  Regex HeadTitleRegex
+        {
+            get {
+                return new Regex(this._headTitleRegexStr);
+            }
+        }
 
-        public string ImgRegex {get;set;}
 
-        public string TimeRegex { get; set; }
+        public  Regex HeadDescripRegex
+        {
+            get
+            {
+                return new Regex(this._headDescripRegexStr);
+            }
+        }
+
+        public  Regex TitleRegex
+        {
+            get
+            {
+                return new Regex(this._titleRegexStr);
+            }
+        }
+
+        public  Regex BodyRegex
+        {
+            get
+            {
+                return new Regex(this._bodyRegexStr);
+            }
+        }
+
+        public  Regex ImgRegex
+        {
+            get
+            {
+                return new Regex(this._imgRegexStr);
+            }
+        }
+
+        public Regex TimeRegex { get; set; }
 
         public void deleteTag(ref string str)
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spider.Spider.CnBlogs
+namespace Spiders
 {
     public static class CnBlogsUriSummaryFactory
     {
@@ -16,7 +16,7 @@ namespace Spider.Spider.CnBlogs
                 case "http://news.cnblogs.com":
                     return new CnBlogsNewsProcessor();
                 default:
-                    return new CommonProcessor();
+                    return new CommonUriProcessor();
             }
         }
     }

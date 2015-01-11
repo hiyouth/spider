@@ -7,12 +7,20 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Util;
 
-namespace Spider.Spider.CnBlogs
+namespace Spiders
 {
     public class CnBlogsNewsProcessor : BaseUriProcessor,IUriSummary
     {
+        
+        public CnBlogsNewsProcessor()
+        {
+            this._titleRegexStr = "<div id=\"news_title\"><a.*?>(?<title>.*?)</a>";
+            this._bodyRegexStr = "<div id=\"news_body\">(?<body>.*?)</div>";
+            this._imgRegexStr = @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>";
+        }
         public SummaryResult GetUriSummary(Uri uri)
         {
+            SummaryResult rlt = new SummaryResult();
             //this.TitleRegex = "<div id=\"news_title\"><a.*?>(?<title>.*?)</a>";
             //this.BodyRegex = "<div id=\"news_body\">(?<body>.*?)</div>";
             //this.ImgRegex = @"<img\b[^<>]*?\bsrc[\s\t\r\n]*=[\s\t\r\n]*[""']?[\s\t\r\n]*(?<imgUrl>[^\s\t\r\n""'<>]*)[^<>]*?/?[\s\t\r\n]*>";
@@ -49,32 +57,33 @@ namespace Spider.Spider.CnBlogs
 
                 //    string str = sb.ToString();
                     //Console.WriteLine(sb);
-                    Match m = titler.Match(str);
+                    Match m = this.TitleRegex.Match(str);
                     if (m.Success)
                     {
                         Console.WriteLine("title:{0}", m.Groups["title"].Value);
                         //streamWriter.WriteLine(m.Groups["title"].Value);
-                        cont.AppendLine(m.Groups["title"].Value);
+                        rlt.Title=m.Groups["title"].Value;
+                  //      cont.AppendLine(m.Groups["title"].Value);
 
                     }
-                    m = bodyr.Match(str);
+                    m = this.BodyRegex.Match(str);
                     if (m.Success)
                     {
                         string body = m.Groups["body"].Value;
                         string bodyFull = body;
                         deleteTag(ref body);
                         Console.WriteLine("获取正文");
-                        cont.AppendLine(body);
+                        rlt.ContentSummary=body;
+                        //cont.AppendLine(body);
 
-                        m = pic.Match(bodyFull);
+                        m = this.ImgRegex.Match(bodyFull);
                         if (m.Success)
                         {
-                            string img = m.Groups["imgUrl"].Value;
+                           rlt.PicUri = m.Groups["imgUrl"].Value;
                         }
                     }
-                    cont.AppendLine("--------------------------------------------------------------");
+                    return rlt;
                 }
-            }
             catch (Exception ex)
             {
                 Console.WriteLine("异常:{0},{1}", ex.Source, ex.Message);
